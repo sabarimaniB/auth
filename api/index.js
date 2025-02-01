@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRoutes from './routes/user.route.js';
 
 dotenv.config();
 
@@ -21,7 +22,9 @@ const connectToMongoDB = async () => {
   }
 };
 
-app.listen(PORT, () => {
-  console.log(`Server  Running on PORT ${PORT}!`);
+app.listen(3000, () => {
+  console.log(`Server Running on PORT ${PORT}!`);
   connectToMongoDB();
 });
+
+app.use('/api/user',userRoutes);
